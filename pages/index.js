@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { loadDB } from '../utils/firebase'
+import '../styles/style.scss'
 
 const Home = () => {
   const [docName, setDocName] = useState('')
@@ -25,11 +26,11 @@ const Home = () => {
   }
 
   return (
-    <>
+    <div className='bg-gray-400'>
       <p>Hello</p>
       <input type='text' value={docName}  onChange={handleSetDocName} />
       <button onClick={handleDocName}>Submit</button>
-    </>
+    </div>
   )
 }
 
