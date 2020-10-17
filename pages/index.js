@@ -1,13 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { connect, useSelector, useDispatch } from 'react-redux'
+import { getRecipes } from '../store/actions/recipesActions'
 import { loadDB } from '../utils/firebase'
 import '../styles/style.scss'
 
 const Home = () => {
   const [docName, setDocName] = useState('')
+  const dispatch = useDispatch()
 
   const handleSetDocName = (event) => {
     setDocName(event.target.value)
   }
+
+  useEffect(() => {
+    const loadRecipes = async () => {
+      await dispatch(getRecipes())
+      console.log('res: ', res);
+    }
+    loadRecipes()
+    return () => {
+      console.log("This will be logged on unmount");
+    }
+  }, [dispatch])
 
   const handleDocName = async () => {
     if(docName) {
