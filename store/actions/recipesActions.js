@@ -16,14 +16,14 @@ import {
   getAllRecipes
 } from '../../pages/api/recipes'
 
-export const getRecipes = async (dispatch) => {
+export const getAll = async (dispatch) => {
   dispatch({ type: GET_RECIPE })
   try {
     const res = await getAllRecipes()
-    const response = await res.json()
+    console.log('res: ', res);
     dispatch({
       type: GET_RECIPE_SUCCESS,
-      payload: response
+      payload: res
     })
   } catch (error) {
     dispatch({ type: GET_RECIPE_FAILURE })

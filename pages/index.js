@@ -12,16 +12,16 @@ const Home = () => {
     setDocName(event.target.value)
   }
 
-  useEffect(() => {
-    const loadRecipes = async () => {
-      await dispatch(getRecipes())
-      console.log('res: ', res);
-    }
-    loadRecipes()
-    return () => {
-      console.log("This will be logged on unmount");
-    }
-  }, [dispatch])
+  // useEffect(() => {
+  //   const loadRecipes = async () => {
+  //     await dispatch(getRecipes())
+  //     console.log('res: ', res);
+  //   }
+  //   loadRecipes()
+  //   return () => {
+  //     console.log("This will be logged on unmount");
+  //   }
+  // }, [dispatch])
 
   const handleDocName = async () => {
     if(docName) {
