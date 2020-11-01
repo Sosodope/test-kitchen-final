@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import { connect, useSelector, useDispatch } from 'react-redux'
-import { getRecipes } from '../store/actions/recipesActions'
+// import { getRecipes } from '../store/actions/recipesActions'
 import { loadDB } from '../utils/firebase'
 import '../styles/style.scss'
 

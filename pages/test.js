@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getRecipes } from '../store/actions/recipesActions'
+import { getAll } from '../store/actions/recipesActions'
 import '../styles/style.scss'
 
 class Test extends React.Component {
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getRecipesAction: async (options) => {
-      const request = await getRecipes(dispatch, options)
+      const request = await getAll(dispatch, options)
       return request
     }
   }
