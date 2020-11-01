@@ -2,13 +2,18 @@
 @import "~tailwindcss/components";
 @import "~tailwindcss/utilities";
 
+@import './global.scss';
+@import './variables.scss';
+
+// COMPONENTS
+@import './button.scss';
+
+
+// PAGES
+@import './signup.scss';
+
 body{
   background: #fffffe;
-}
-
-button{
-  // background: #3da9fc;
-  // color: #5f6c7b;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -22,4 +27,8 @@ p{
 .aside{
   background: #094067;
   color: #fffffe;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
 }

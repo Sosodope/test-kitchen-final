@@ -64,6 +64,7 @@ const recipesData = {
       id: 1,
       title: 'My Test Recipe 1',
       prepTime: '15 mins',
+      description: 'Blah blah blah',
       steps: 'Step 1, step 2 step 3',
       ingredients: [
         {
@@ -88,6 +89,7 @@ const recipesData = {
     {
       id: 100,
       title: 'Test Recipe 1',
+      description: 'Blah blah blah',
       prepTime: '30 mins',
       steps: 'Step 1, step 2 step 3',
       ingredients: [
@@ -114,6 +116,86 @@ const recipesData = {
       id: 100,
       title: 'Test Recipe 1',
       prepTime: '30 mins',
+      description: 'Blah blah blah',
+      steps: 'Step 1, step 2 step 3',
+      ingredients: [
+        {
+          id: 1,
+          name: 'Garlic',
+          amount: '2 cloves'
+        },
+        {
+          id: 2,
+          name: 'Onions',
+          amount: '2'
+        }
+      ],
+      tags: [
+        'vegetarian',
+        'spicy',
+        'indian'
+      ]
+    }
+  ]
+}
+
+const myRecipes = {
+  published: [
+    {
+      id: 21,
+      title: 'My Test Recipe 100000',
+      prepTime: '15 mins',
+      description: 'Blah blah blah',
+      steps: 'Step 1, step 2 step 3',
+      ingredients: [
+        {
+          id: 1,
+          name: 'Garlic',
+          amount: '2 cloves'
+        },
+        {
+          id: 2,
+          name: 'Onions',
+          amount: '2'
+        }
+      ],
+      tags: [
+        'vegetarian',
+        'spicy',
+        'indian'
+      ]
+    }
+  ],
+  drafts: [
+    {
+      id: 100,
+      title: 'Test Recipe 21',
+      prepTime: '30 mins',
+      description: 'Blah blah blah',
+      steps: 'Step 1, step 2 step 3',
+      ingredients: [
+        {
+          id: 1,
+          name: 'Garlic',
+          amount: '2 cloves'
+        },
+        {
+          id: 2,
+          name: 'Onions',
+          amount: '2'
+        }
+      ],
+      tags: [
+        'vegetarian',
+        'spicy',
+        'indian'
+      ]
+    },
+    {
+      id: 101,
+      title: 'Test Recipe 1',
+      description: 'Blah blah blah',
+      prepTime: '30 mins',
       steps: 'Step 1, step 2 step 3',
       ingredients: [
         {
@@ -138,5 +220,6 @@ const recipesData = {
 
 export {
   userData,
-  recipesData
+  recipesData,
+  myRecipes
 }

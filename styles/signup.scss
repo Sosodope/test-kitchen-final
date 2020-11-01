@@ -1,0 +1,13 @@
+.signup-container{
+  background-color: $bg-blue;
+  .signup-content{
+    background-color: $main-white;
+  }
+}
+
+.signup-header{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
