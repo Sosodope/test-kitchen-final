@@ -22,7 +22,9 @@ class Recipe extends React.Component {
         <main className="bg-gray-100 h-screen w-full overflow-y-auto">
           <section id="performance">
             <header className="border-b border-solid border-gray-300 bg-white flex justify-between">
-              <button href="#performance" className="rounded text-sm block py-3 px-6 hover:bg-blue-600 text-left">Add Recipe</button>
+              <Link href='/add/new-recipe'>
+								<button href="#performance" className="rounded text-sm block py-3 px-6 hover:bg-blue-600 text-left">Add Recipe</button>
+							</Link>
             </header>
             <section className="m-4 bg-white border border-gray-300 border-solid rounded shadow">
               <header className="border-b border-solid border-gray-300 p-4 text-lg font-medium">
@@ -41,7 +43,7 @@ class Recipe extends React.Component {
               </header>
               <section className="p-4 flex flex-row flex-wrap items-center text-center">
               <div className="w-full">
-              <img className="w-full" src="https://images.unsplash.com/photo-1600345968497-bb0c69de64f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sunset in the mountains" />
+              <img className="w-full" src='/placeholder.png' alt="Sunset in the mountains" />
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full px-3">
                     <h6 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
@@ -78,8 +80,8 @@ class Recipe extends React.Component {
                 <div className="mt-6">
                   <Button
                     extraClasses={`group relative w-full md:w-1/3 flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out`}
-                    label={'Save'}
-                    onClick={() => { console.log('clicked') }}
+                    label={'Remove'}
+                    onClick={() => { console.log('Remove clicked') }}
                   />
                 </div>
               </div>

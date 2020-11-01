@@ -22,8 +22,9 @@ class Recipe extends React.Component {
         <main className="bg-gray-100 h-screen w-full overflow-y-auto">
           <section id="performance">
             <header className="border-b border-solid border-gray-300 bg-white flex justify-between">
-              <button href="#performance" className="rounded text-sm block py-3 px-6 hover:bg-blue-600 text-left">Add Recipe</button>
-            </header>
+              <Link href='/add/new-recipe'>
+								<button href="#performance" className="rounded text-sm block py-3 px-6 hover:bg-blue-600 text-left">Add Recipe</button>
+							</Link>            </header>
             <section className="m-4 bg-white border border-gray-300 border-solid rounded shadow">
               <header className="border-b border-solid border-gray-300 p-4 text-lg font-medium">
                   Last Updated 5 mins ago

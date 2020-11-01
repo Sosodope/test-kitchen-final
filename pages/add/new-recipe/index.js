@@ -25,7 +25,7 @@ class NewRecipe extends React.Component {
       ingredientAmount: '',
       ingredientName: '',
       step: '',
-      status: 'draft',
+      status: 'Save Draft',
       authorId: '1',
       defaultImage: '',
       image: ''
@@ -103,24 +103,25 @@ class NewRecipe extends React.Component {
         <main className="bg-gray-100 h-screen w-full overflow-y-auto">
           <section id="performance">
             <header className="border-b border-solid border-gray-300 bg-white flex justify-between">
-              <button href="#performance" className="rounded text-sm block py-3 px-6 hover:bg-blue-600 text-left">Add Recipe</button>
-            </header>
+              <Link href='/add/new-recipe'>
+								<button href="#performance" className="rounded text-sm block py-3 px-6 hover:bg-blue-600 text-left">Add Recipe</button>
+							</Link>            </header>
             <section className="m-4 bg-white border border-gray-300 border-solid rounded shadow">
               <header className="flex flex-column justify-between border-b border-solid border-gray-300 p-4 text-lg font-medium">
                   <h1>New Recipe</h1>
                   <div className="flex">
-                  <div class="mr-2 dropdown inline-block relative">
-                    <button class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
-                      <span class="mr-1">{this.state.status}</span>
-                      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
+                  <div className="mr-2 dropdown inline-block relative">
+                    <button className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+                      <span className="mr-1">{this.state.status}</span>
+                      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
                     </button>
-                    <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
-                      <li class=""><p class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" onClick={() => this.updateStatus('publish')}>Publish</p></li>
-                      <li class=""><p class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" onClick={() => this.updateStatus('private')}>Make Private</p></li>
-                      <li class=""><p class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" onClick={() => this.updateStatus('draft')}>Save Draft</p></li>
+                    <ul className="dropdown-menu absolute hidden text-gray-700 pt-1">
+                      <li className=""><p className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" onClick={() => this.updateStatus('Publish')}>Publish</p></li>
+                      <li className=""><p className="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" onClick={() => this.updateStatus('Make Private')}>Make Private</p></li>
+                      <li className=""><p className="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" onClick={() => this.updateStatus('Save Draft')}>Save Draft</p></li>
                     </ul>
                   </div>
-                  <button onClick={this.handleSave}>Save</button>
+                  <button onClick={this.handleSave} className='btn group relative flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out'>Save</button>
                   </div>
               </header>
               <section className="p-4 flex flex-row flex-wrap items-center text-center">
@@ -154,13 +155,15 @@ class NewRecipe extends React.Component {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
                       Steps
                     </label>
-                    <textarea name='step' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder={'Enter a step'} onChange={this.handleUpdate} />
-                    {/* <Button
-                      extraClasses={`group relative flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out`}
-                      label={'Add Step'}
-                      onClick={this.addStep}
-                    /> */}
-                    <button onClick={this.addStep}>
+                    <div>
+                      {
+                        this.state.steps.map((step, index) => {
+                        return <p key={index}>{step}</p>
+                        })
+                      }
+                    </div>
+                    <textarea name='step' key={this.state.steps} className="mb-2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder={'Enter a step'} onChange={this.handleUpdate} />
+                    <button onClick={this.addStep} className='btn group relative flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out'>
                       Add Step
                     </button>
                   </div>
@@ -168,18 +171,25 @@ class NewRecipe extends React.Component {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
                     Ingredients
                     </label>
-                    <input name='ingredientName' className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder='Enter an ingredient name' onChange={this.handleUpdate} />
-                    <input name='ingredientAmount' className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder='Enter an ingredient amount' onChange={this.handleUpdate} />
-                    {/* <Button
-                      extraClasses={`group relative flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out`}
-                      label={'Add Ingredient'}
-                      onClick={this.addIngredient}
-                    /> */}
-                    <button onClick={this.addIngredient}>
+                    <div>
+                      {
+                        this.state.ingredients.map((ingredient, index) => {
+                        return (
+                          <div key={index}>
+                            <span>{ingredient.name} - {ingredient.amount}</span>
+                          </div>
+                        )
+                        })
+                      }
+                    </div>
+                    <input key={`${this.state.ingredients}-name`} name='ingredientName' className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder='Enter an ingredient name' onChange={this.handleUpdate} />
+                    <input key={`${this.state.ingredients}-amount`} name='ingredientAmount' className="mb-2 appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder='Enter an ingredient amount' onChange={this.handleUpdate} />
+
+                    <button onClick={this.addIngredient} className='btn group relative flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out'>
                       Add Ingredient
                     </button>
                   </div>
-                  <ImageUpload />
+                  {/* <ImageUpload /> */}
                   {/* <div className="w-full px-3 mb-6 md:mb-0">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
                     Tags

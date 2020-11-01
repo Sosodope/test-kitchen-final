@@ -14,9 +14,6 @@ class Home extends React.Component {
 		}
 	}
 	componentDidMount() {
-		// getRecipes().then(doc => {
-    //   this.setState({ recipes: doc });
-		// })
 		this.props.getRecipesAction()
 	}
   render() {
@@ -27,7 +24,9 @@ class Home extends React.Component {
 					<section id="performance">
 						<header className="border-b border-solid border-gray-300 bg-white flex justify-between">
 							<h2 className="p-6">Search</h2>
-							<button href="#performance" className="rounded text-sm block py-3 px-6 hover:bg-blue-600 text-left">Add Recipe</button>
+							<Link href='/add/new-recipe'>
+								<button href="#performance" className="rounded text-sm block py-3 px-6 hover:bg-blue-600 text-left">Add Recipe</button>
+							</Link>
 						</header>
 						<section className="m-4 bg-white border border-gray-300 border-solid rounded shadow">
 							<header className="border-b border-solid border-gray-300 p-4 text-lg font-medium">
@@ -35,17 +34,17 @@ class Home extends React.Component {
 							</header>
 							<section className=" flex flex-row flex-wrap items-center text-center">
 								{
-									this.props.recipes.map((recipe) => {
+									this.props.recipes.map((recipe, index) => {
 										return (
 											<Link
                         href={`/recipes/[id]`}
-                        as={`/recipes/${recipe.id}`}
-                        key={recipe.id}
+                        as={`/recipes/${index}`}
+                        key={index}
                         >
 												<div className="p-4 w-full sm:w-1/2 lg:w-1/4 border-b md:border-b-0 sm:border-r">
 													<span className="text-xs font-medium text-gray-500 uppercase">{recipe.title}</span>
 													<div className="py-4 flex flex-col items-center justify-center text-center">
-														<div style={{ width: '250px', height: '250px', overflow: 'hidden', background: `url('https://images.unsplash.com/photo-1574484284002-952d92456975?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')`, backgroundPosition: 'center', backgroundSize: 'cover'  }} />
+														<div style={{ width: '250px', height: '250px', overflow: 'hidden', background: `url('/placeholder.png')`, backgroundPosition: 'center', backgroundSize: 'cover'  }} />
 											<span className="items-center h-6 px-2 text-xs">{recipe.description}</span>
 													</div>
 												</div>
@@ -53,34 +52,6 @@ class Home extends React.Component {
 										)
 									})
 								}
-								{/* <div className="p-4 w-full sm:w-1/2 lg:w-1/4 border-b md:border-b-0 sm:border-r">
-									<span className="text-xs font-medium text-gray-500 uppercase">Some Fancy Dish</span>
-									<div className="py-4 flex flex-col items-center justify-center text-center">
-										<div style={{ width: '250px', height: '250px', overflow: 'hidden', background: `url('https://images.unsplash.com/photo-1574484284002-952d92456975?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')`, backgroundPosition: 'center', backgroundSize: 'cover'  }} />
-										 <span className="items-center h-6 px-2 text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</span>
-									</div>
-								</div> */}
-								{/* <div className="p-4 w-full sm:w-1/2 lg:w-1/4 border-b border-solid border-gray-300 md:border-b-0 sm:border-r">
-								<span className="text-xs font-medium text-gray-500 uppercase">Some Fancy Dish</span>
-									<div className="py-4 flex flex-col items-center justify-center text-center">
-										<div style={{ width: '250px', height: '250px', overflow: 'hidden', background: `url('https://images.unsplash.com/photo-1600345968497-bb0c69de64f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')`, backgroundPosition: 'center', backgroundSize: 'cover'  }} />
-										 <span className="items-center h-6 px-2 text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</span>
-									</div>
-								</div>
-								<div className="p-4 w-full sm:w-1/2 lg:w-1/4 border-b border-solid border-gray-300 md:border-b-0 sm:border-r">
-								<span className="text-xs font-medium text-gray-500 uppercase">Some Fancy Dish</span>
-									<div className="py-4 flex flex-col items-center justify-center text-center">
-										<div style={{ width: '250px', height: '250px', overflow: 'hidden', background: `url('https://images.unsplash.com/photo-1594124283765-34c7de0ca7c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80')`, backgroundPosition: 'center', backgroundSize: 'cover'  }} />
-										 <span className="items-center h-6 px-2 text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</span>
-									</div>
-								</div>
-								<div className="p-4 w-full sm:w-1/2 lg:w-1/4 border-b border-solid border-gray-300 md:border-b-0 sm:border-r flex flex-col items-center">
-								<span className="text-xs font-medium text-gray-500 uppercase">Some Fancy Dish</span>
-									<div className="py-4 flex flex-col items-center justify-center text-center">
-										<div style={{ width: '250px', height: '250px', overflow: 'hidden', background: `url('https://images.unsplash.com/photo-1560684352-8497838a2229?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=756&q=80')`, backgroundPosition: 'center', backgroundSize: 'cover'  }} />
-										 <span className="items-center h-6 px-2 text-xs">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</span>
-									</div>
-								</div> */}
 							
 							</section>
 						</section>
