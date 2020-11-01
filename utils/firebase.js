@@ -29,6 +29,7 @@ export async function loadDB() {
 export const getRecipes = () => {
   try {
     app.initializeApp(config)
+    
     const firestore = app.firestore()
     return new Promise((resolve, reject) => {
       firestore.collection("recipes")

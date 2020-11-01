@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { userData } from '../data'
 import Sidebar from '../components/Shared/Sidebar'
 import { getAll } from '../store/actions/recipesActions'
-// import { loadDB, getRecipes } from '../utils/firebase'
+import { getRecipes } from '../utils/firebase'
 import '../styles/style.scss'
 
 class Home extends React.Component {
@@ -12,10 +12,12 @@ class Home extends React.Component {
 		this.state = {
 			recipes: []
 		}
-	}
+  }
+  
 	componentDidMount() {
 		this.props.getRecipesAction()
 	}
+  
   render() {
 		return(
 			<div id="app" className="md:flex antialiased">
@@ -34,7 +36,7 @@ class Home extends React.Component {
 							</header>
 							<section className=" flex flex-row flex-wrap items-center text-center">
 								{
-									this.props.recipes.map((recipe, index) => {
+									this.props.recipes && this.props.recipes.map((recipe, index) => {
 										return (
 											<Link
                         href={`/recipes/[id]`}
@@ -42,10 +44,10 @@ class Home extends React.Component {
                         key={index}
                         >
 												<div className="p-4 w-full sm:w-1/2 lg:w-1/4 border-b md:border-b-0 sm:border-r">
-													<span className="text-xs font-medium text-gray-500 uppercase">{recipe.title}</span>
+													<span className="text-xs font-medium text-gray-500 uppercase">{recipe.title || 'Title Not Available'}</span>
 													<div className="py-4 flex flex-col items-center justify-center text-center">
 														<div style={{ width: '250px', height: '250px', overflow: 'hidden', background: `url('/placeholder.png')`, backgroundPosition: 'center', backgroundSize: 'cover'  }} />
-											<span className="items-center h-6 px-2 text-xs">{recipe.description}</span>
+											<span className="items-center h-6 px-2 text-xs">{recipe.description || 'Description Not Available'}</span>
 													</div>
 												</div>
 											</Link>
@@ -56,7 +58,7 @@ class Home extends React.Component {
 							</section>
 						</section>
 	
-						<div className="flex flex-wrap flex-row">
+						{/* <div className="flex flex-wrap flex-row">
 							<div className="w-full lg:w-1/2">
 								<section className="m-4 bg-white border border-gray-300 border-solid rounded shadow">
 									<header className="border-b border-solid border-gray-300 p-4 text-lg font-medium">
@@ -163,13 +165,13 @@ class Home extends React.Component {
 									</section>
 								</section>
 							</div>
-						</div>
+						</div> */}
 						
-						<section id="new">
+						{/* <section id="new">
 							<header className="border-b border-solid border-gray-300 bg-white">
 							<h2 className="p-6">My Drafts</h2>
 						</header>
-						</section>
+						</section> */}
 					</section>
 				</main>
 	
@@ -192,5 +194,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

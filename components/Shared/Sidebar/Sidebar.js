@@ -13,13 +13,21 @@ const Sidebar = (props) => {
     	<nav className="overflow-y-auto h-full flex-grow">
     		<ul className="font-medium px-4 text-left">
     			<li>
+    				<Link href='/'>
+							<button className="rounded text-sm text-left block py-3 px-6 hover:bg-blue-600 w-full">Home</button>
+						</Link>
+    			</li>
+					<li>
     				<Link href='/saved-recipes'>
 							<button className="rounded text-sm text-left block py-3 px-6 hover:bg-blue-600 w-full">Saved Recipes</button>
 						</Link>
-
+    			</li>
+					<li>
 						<Link href='/my-recipes'>
 							<button className="rounded text-sm block py-3 px-6 hover:bg-blue-600 w-full text-left">My Recipes</button>
 						</Link>
+    			</li>
+					<li>
 						<Link href='/settings'>
     					<button className="rounded text-sm block py-3 px-6 hover:bg-blue-600 w-full text-left">Settings</button>
 						</Link>
